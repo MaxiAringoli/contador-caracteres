@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101722" />
+    <meta name="description" content="Contá caracteres y revisá si tu texto entra en los límites de tus redes sociales antes de publicar." />
+    <title>¿Entra? — Contador de caracteres</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="page-header">
+        <nav class="breadcrumbs" aria-label="Producto">
+          <span class="brand-symbol" aria-hidden="true">✳</span>
+          <span>CONTADOR DE CARACTERES</span>
+          <span class="brand-divider" aria-hidden="true">/</span>
+          <span class="brand-subtitle">SOCIAL TOOLKIT</span>
+        </nav>
+        <h1>Tu texto,<br /><span>en su medida.</span></h1>
+        <p class="intro">Ajustá, contá y publicá con el largo correcto en cada plataforma.</p>
+      </header>
+
+      <section class="counter-card" id="editor" aria-labelledby="editor-title">
+        <h2 class="visually-hidden" id="editor-title">Editor de texto</h2>
+        <label class="visually-hidden" for="post-text">Tu texto</label>
+        <textarea id="post-text" autofocus placeholder="Escribí o pegá tu post, caption, bio o meta descripción…" spellcheck="true"></textarea>
+
+        <div class="editor-footer">
+          <span class="keyboard-hint">Tus ideas, con el espacio justo.</span>
+          <div class="editor-actions">
+            <button class="text-button" id="clear-button" type="button">Borrar texto</button>
+            <button class="copy-button" id="copy-button" type="button" disabled>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"></rect><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path></svg>
+              <span>Copiar texto</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="summary" aria-live="polite" aria-atomic="true">
+          <div class="summary-item"><span class="summary-number" id="character-count">0</span><span class="summary-label">caracteres sin espacios</span></div>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <div class="summary-item"><span class="summary-number" id="whitespace-count">0</span><span class="summary-label">espacios en blanco</span></div>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <div class="summary-item"><span class="summary-number" id="total-count">0</span><span class="summary-label">total con espacios</span></div>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <div class="summary-item"><span class="summary-number" id="word-count">0</span><span class="summary-label">palabras</span></div>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <div class="summary-item"><span class="summary-number" id="reading-time">0</span><span class="summary-label">min de lectura</span></div>
+        </div>
+      </section>
+
+      <section class="platform-section" aria-labelledby="platform-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">UN TEXTO, DISTINTOS ESPACIOS</p>
+            <h2 id="platform-title">Elegí dónde vas a publicar</h2>
+          </div>
+          <span class="live-indicator"><span></span>Se actualiza en vivo</span>
+        </div>
+
+        <div class="platform-grid" role="group" aria-label="Plataforma de publicación">
+          <button class="platform-chip is-selected" type="button" data-platform="instagram" aria-pressed="true"><span class="platform-mark instagram">ig</span>Instagram</button>
+          <button class="platform-chip" type="button" data-platform="x" aria-pressed="false"><span class="platform-mark x-mark">𝕏</span>X</button>
+          <button class="platform-chip" type="button" data-platform="tiktok" aria-pressed="false"><span class="platform-mark tiktok">♪</span>TikTok</button>
+          <button class="platform-chip" type="button" data-platform="linkedin" aria-pressed="false"><span class="platform-mark linkedin">in</span>LinkedIn</button>
+          <button class="platform-chip" type="button" data-platform="youtube" aria-pressed="false"><span class="platform-mark youtube">▶</span>YouTube</button>
+          <button class="platform-chip" type="button" data-platform="meta" aria-pressed="false"><span class="platform-mark meta">⌕</span>Meta description</button>
+        </div>
+
+        <article class="platform-result" aria-live="polite" aria-atomic="true">
+          <div class="result-topline">
+            <div class="result-platform"><span class="platform-mark instagram" id="active-mark">ig</span><div><h3 id="active-name">Instagram</h3><p id="limit-caption">Límite recomendado para un caption</p></div></div>
+            <p class="result-status" id="result-status"><span class="status-dot"></span><span>Te quedan <strong id="remaining-count">2.200</strong> caracteres</span></p>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="Uso del límite de caracteres" aria-valuemin="0" aria-valuemax="2200" aria-valuenow="0" id="progress-track"><span id="progress-fill"></span></div>
+          <div class="progress-labels"><span id="usage-label">0 de 2.200 caracteres</span><span id="percent-label">0%</span></div>
+        </article>
+        <p class="footnote">Los límites pueden variar según el formato y las actualizaciones de cada plataforma.</p>
+      </section>
+
+      <footer class="page-footer"><span>Hecho para que cada palabra encuentre su lugar.</span><span>Un contador simple, sin vueltas.</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
